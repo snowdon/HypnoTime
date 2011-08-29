@@ -7,6 +7,8 @@
 //
 
 #import "HypnoTimeAppDelegate.h"
+#import "HypnosisViewController.h"
+#import "CurrenyTimeViewController.h"
 
 @implementation HypnoTimeAppDelegate
 
@@ -16,6 +18,22 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    UITabBarController *tabBarController = [[UITabBarController alloc] init];
+    
+    UIViewController *vc1 = [[HypnosisViewController alloc]init];
+    UIViewController *vc2 = [[CurrenyTimeViewController alloc]init];
+    
+    NSArray *viewControllers = [NSArray  arrayWithObjects:vc1, vc2, nil];
+    
+    [vc1 release];
+    [vc2 release];
+    
+    [tabBarController setViewControllers:viewControllers];
+    
+    [[self window] setRootViewController:tabBarController];
+    
+    [tabBarController release];
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
