@@ -13,7 +13,7 @@
 
 - (id)init
 {
-    self = [super initWithNibName:nil bundle:nil];
+    self = [super initWithNibName:@"CurrentTimeViewController" bundle:nil];
     
     if (self) {
         UITabBarItem *tbi = [self tabBarItem];;
@@ -38,7 +38,19 @@
     
     NSLog(@"Loaded the view for CurrentTimeViewController");
     
-    [[self view] setBackgroundColor:[UIColor greenColor]];
+ //   [[self view] setBackgroundColor:[UIColor greenColor]];
+}
+
+- (IBAction) showCurrentTime:(id)sender
+{
+    NSDate *now = [NSDate date];
+    static NSDateFormatter *formatter = nil;
+    
+    if (!formatter) {
+        formatter = [[NSDateFormatter alloc] init];
+        [formatter setTimeStyle:NSDateFormatterShortStyle];
+    }
+    [timeLabel setText:[formatter stringFromDate:now]];
 }
 
 
